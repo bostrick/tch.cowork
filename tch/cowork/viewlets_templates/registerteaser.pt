@@ -1,0 +1,17 @@
+<tal:wrapper omit-tag="" condition="viewlet/available">
+<div class="tch_banner" tal:define="
+    portal_url  context/@@plone_portal_state/portal_url;
+">
+
+        <h3>
+            Interested in becoming a member of theClubhou.se?  
+        </h3>
+
+        <p>
+            <a tal:attributes="href string:${portal_url}/@@tch_register">
+                Here's how...
+            </a>
+        </p>
+
+</div>
+</tal:wrapper>

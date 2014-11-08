@@ -1,0 +1,49 @@
+div.tch_banner {
+    border: solid 1pt grey;
+    border-radius: 5pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    padding: 10pt;
+    background-color: #fcc;
+}
+
+div.tch_blob {
+    border: solid 1pt grey;
+    border-radius: 5pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    padding: 10pt;
+}
+
+div.tch_step {
+    margin-top: 20pt;
+    margin-left: 20pt;
+}
+
+div.tch_step div {
+    margin-top: 5pt;
+    margin-left: 10pt;
+}
+
+table.tch_plan {
+    margin-top: 10pt;
+}
+
+table.tch_plan div.select {
+    padding: 10pt;
+}
+
+table.tch_plan div.plan_info {
+    padding: 20pt;
+    border: solid 1pt gray;
+    border-radius: 5pt;
+}
+
+div.tch_payment_form {
+    padding: 20pt;
+}
+

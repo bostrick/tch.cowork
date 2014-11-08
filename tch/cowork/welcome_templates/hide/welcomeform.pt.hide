@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="totav.stripe">
+<body>
+
+<tal:comment tal:condition="nothing">
+    This is a sample view template. It will not be used for rendering the
+    content unless activated by creation of a view class with a matching name.
+</tal:comment>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+    <div tal:content="context/Title">Title inserted here</div>
+
+    <table class="listing" tal:define="
+        vinfo view/view_info;
+        sdata vinfo/stripe_data;
+        plan  nocall: context/plan/to_object;
+    ">
+
+    <tbody>
+
+        <tr>
+            <th> Plan </th>
+            <td> 
+                <div tal:condition="context/plan">
+                    <a tal:attributes="href plan/absolute_url"
+                        tal:content="plan/title"/>
+                    ( 
+                        <span tal:content="plan/display_amount"/> / 
+                        <span tal:content="plan/interval"/>
+                    )
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Subscription Status</th>
+            <td>
+                <span tal:content="context/status"/>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Current Period</th>
+            <td>
+                <span tal:content="context/current_period_start"/> - 
+                <span tal:content="context/current_period_end"/>
+            </td>
+        </tr>
+
+    </tbody>
+    </table>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

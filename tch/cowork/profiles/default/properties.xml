@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<site>
+ <property name="title">TheClubhou.se</property>
+ <property name="description"></property>
+ <property name="email_from_address" type="string">bowe@yak.net</property>
+ <property name="email_from_name" type="string">TheClubhou.se</property>
+</site>

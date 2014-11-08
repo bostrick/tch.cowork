@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="totav.stripe">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+  <div class="tch_blob" tal:define="
+        portal_state   context/@@plone_portal_state;
+        context_state  context/@@plone_context_state;
+        url_base       string:${context/absolute_url}/@@tch_register;
+        all_plans      view/plans;
+        selected_plan  view/selected_plan;
+        plans          python: [ selected_plan, ] if selected_plan else all_plans;
+  ">
+
+    <h2>
+        Registration
+    </h2>
+
+    <div class="tch_step">
+
+        <p>
+            <b>Step 1:</b> Register an account on this site. 
+        <p>
+
+        <div tal:condition="portal_state/anonymous">
+
+            <p>
+                Not registered?  You can register  
+                <a tal:attributes="href string: @@register">here</a>.
+            </p>
+
+            <p>
+                Already registered?  You can login
+                <a tal:attributes="href string: login">here</a>.
+            </p>
+
+        </div>
+
+        <div tal:condition="not: portal_state/anonymous">
+
+            <p>
+                <b>Done!</b>
+            </p>
+
+        </div>
+
+
+    </div>
+
+    <div class="tch_step">
+
+        <b>Step 2:</b> Select a Plan.
+
+        <table class="tch_plan"><tbody>
+        <tr tal:condition="not: portal_state/anonymous"
+            tal:repeat="plan plans">
+
+            <td tal:define="url string:${url_base}?plan=${plan/id}">
+
+                <div class="select" tal:condition="not: selected_plan">
+                    <b>[ <a tal:attributes="href url">select</a> ]</b>
+                </div>
+
+                <div class="select" tal:condition="selected_plan">
+                    <b> selected! </b><br/>
+                    <a tal:attributes="href url_base">go back...</a>
+                </div>
+
+            </td>
+
+            <td>
+
+                <div class="plan_info">
+
+                    <img tal:attributes="src plan/getIcon">
+
+                    <span><b tal:content="plan/Title"/></span>
+
+                    <a target="_blank" tal:attributes="href plan/getURL">
+                        Find out more...
+                    </a>
+
+                    <div class="description" tal:content="plan/Description">
+                    </div>
+
+                </div>
+            
+            </td>
+
+        </tr>
+        </tbody></table>
+
+    </div>
+
+    <div class="tch_step">
+
+        <b>Step 3:</b> Enter Payment information.
+
+        <div tal:condition="selected_plan" class="tch_payment_form">
+            <metal:block use-macro="context/@@ploneform-macros/form" />
+        </div>
+            
+    </div>
+
+  </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

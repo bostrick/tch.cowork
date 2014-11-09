@@ -1,3 +1,15 @@
+
+#viewlet-above-content-body {
+    margin-bottom: 20pt;
+}
+
+#content-core div.item {
+    margin-bottom: 20pt;
+    padding: 10pt;
+    border: solid 1pt #ccc;
+    border-radius: 5pt;
+}
+
 div.tch_banner {
     border: solid 1pt grey;
     border-radius: 5pt;

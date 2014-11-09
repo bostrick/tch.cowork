@@ -37,4 +37,8 @@
       handler="tch.cowork.setuphandlers.setupVarious"
       />
 
+    <interface 
+      interface="tch.cowork.interfaces.IMembershipRelated"/>
+
 </configure>
+

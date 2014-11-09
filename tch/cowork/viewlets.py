@@ -11,6 +11,7 @@ from plone import api
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from tch.cowork import MessageFactory as _
+from tch.cowork.interfaces import IMembershipRelated
 
 class RegisterTeaser(grok.Viewlet):
 
@@ -18,16 +19,13 @@ class RegisterTeaser(grok.Viewlet):
     """
 
     grok.viewletmanager(IAboveContent)
-    grok.context(Interface)
+    grok.context(IMembershipRelated)
 
     def available(self):
 
-        context_state = self.context.restrictedTraverse("@@plone_context_state")
-        if not context_state.is_portal_root():
-            return 
-
-        if self.request.steps[-1] == "@@tch_register":
-            return 
+        cs = self.context.restrictedTraverse("@@plone_context_state")
+        if not cs.is_view_template():
+            return False
 
         if api.user.is_anonymous():
             return True

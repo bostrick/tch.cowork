@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+<dl class="portlet portletMembership">
+
+    <dt class="portletHeader">
+        Membership Information
+    </dt>
+
+    <dd class="portletItem">
+
+        <div tal:condition="not: view/is_member">
+            Interested in becoming a member?  Find out
+            <a tal:attributes="href view/minfo_url">
+                more information 
+            </a>...
+        </div>
+
+        <div tal:condition="view/is_member">
+            Manage your membership information.
+        </div>
+        
+    </dd>
+
+</dl>
+</html>
+    
+

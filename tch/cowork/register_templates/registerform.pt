@@ -65,7 +65,7 @@
             <td tal:define="url string:${url_base}?plan=${plan/id}">
 
                 <div class="select" tal:condition="not: selected_plan">
-                    <b>[ <a tal:attributes="href url">select</a> ]</b>
+                    <b>[&nbsp;<a tal:attributes="href url">select</a>&nbsp;]</b>
                 </div>
 
                 <div class="select" tal:condition="selected_plan">
